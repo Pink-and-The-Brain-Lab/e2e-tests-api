@@ -1,16 +1,23 @@
 import { Router } from "express";
-import signinRouter from "./signin.routes";
-import resetPasswordRouter from "./reset-password.routes";
-import codeValidationRouter from "./code-validation.routes";
-import createPasswordRouter from "./create-password.routes";
-import signupRouter from "./signup.routes";
+import signinRouter from "./login/signin.routes";
+import codeValidationRouter from "./common/code-validation.routes";
+import createPasswordRouter from "./login/create-password.routes";
+import resetPasswordRouter from "./login/reset-password.routes";
+import signupRouter from "./login/signup.routes";
+import checkEmailDisponibilityRouter from "./profile/check-email-disponibility.routes";
+import checkPhoneNumberDisponibilityRouter from "./profile/check-phone-number-disponibility.routes";
+import createProfileRouter from "./profile/create-profile.routes";
+import profilesRouter from "./profile/profiles.routes";
 
 const routes = Router();
-
 routes.use('/sign-in', signinRouter);
 routes.use('/reset-password', resetPasswordRouter);
 routes.use('/token-validation', codeValidationRouter);
 routes.use('/create-password', createPasswordRouter);
 routes.use('/sign-up', signupRouter);
-
+routes.use('/auth/profiles', profilesRouter);
+routes.use('/check-email-disponibility', checkEmailDisponibilityRouter);
+routes.use('/create-profile', createProfileRouter);
+routes.use('/check-phone-number-disponibility', checkPhoneNumberDisponibilityRouter);
+routes.use('/update-profile', checkPhoneNumberDisponibilityRouter);
 export default routes;
